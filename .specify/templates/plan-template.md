@@ -17,21 +17,26 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: Python 3.12+
+**Primary Dependencies**: Tkinter
+**Storage**: N/A
+**Testing**: pytest
+**Target Platform**: Desktop
+**Project Type**: single
+**Performance Goals**: N/A
+**Constraints**: Minimal dependencies
+**Scale/Scope**: Simple calculator UI
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Type Safety First**: Are all new functions, methods, and variables fully type-annotated?
+- [ ] **Minimalist Dependencies**: Does this feature add new dependencies? If so, are they justified and approved?
+- [ ] **Strict Tooling**: Are `uv`, `pytest`, `ruff`, and `mypy` used for all relevant tasks?
+- [ ] **Standard Library UI**: Is the UI built exclusively with Tkinter?
+- [ ] **Test-Driven Development**: Are there comprehensive unit and integration tests for this feature?
+- [ ] **Configuration as Code**: Is all new configuration managed in `pyproject.toml`?
 
 ## Project Structure
 
@@ -48,51 +53,21 @@ specs/[###-feature]/
 ```
 
 ### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
-
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+└── calculator/
+    ├── __init__.py
+    ├── main.py
+    ├── ui.py
+    └── logic.py
 
 tests/
-├── contract/
-├── integration/
-└── unit/
-
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+├── __init__.py
+├── test_logic.py
+└── test_ui.py
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Single project structure with a `calculator` package.
 
 ## Complexity Tracking
 

@@ -1,55 +1,83 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+---
+version_change: "1.1.0 -> 1.2.0"
+modified_principles:
+  - Code Style
+added_sections:
+  - Core Principles: VII. Embrace Object-Oriented Design
+  - Code Style: Clean Code Practices
+removed_sections: []
+templates_updated: []
+follow_up_todos: []
+---
+-->
+# Simple Calculator Constitution
 
-## Core Principles
+## 1. Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Enforce Strict Type Safety
+All new code must include PEP 484-compliant type hints. This will be enforced by `mypy` in strict mode.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Maintain Minimalist Dependencies
+Only `pytest` and essential development tools (`ruff`, `mypy`) are permitted as development-only dependencies. No additional runtime dependencies are allowed for the MVP.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Adhere to Standardized Tooling
+The project exclusively uses `uv`, `pytest`, `ruff`, and `mypy` for environment management, testing, code formatting, and type checking.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Use Standard Library for UI
+The Minimum Viable Product (MVP) will use Tkinter for its graphical user interface. No external GUI libraries are to be introduced.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Practice Test-Driven Development (TDD)
+All new features or bug fixes must be accompanied by comprehensive unit and integration tests written with `pytest`.
 
-### [PRINCIPLE_6_NAME]
+### VI. Centralize Configuration
+All project configuration must be managed within `pyproject.toml`. No `requirements.txt` or `Pipfile` files are to be used.
 
+### VII. Embrace Object-Oriented Design
+The calculator's core logic, including its state and operations, must be encapsulated within classes. The design should favor composition over inheritance and follow SOLID principles where applicable.
 
-[PRINCIPLE__DESCRIPTION]
+## 2. Code Style & Clean Code Practices
+- **Formatting**: Code will be auto-formatted using `ruff format`.
+- **Linting**: Code quality will be enforced using `ruff check`.
+- **Imports**: Imports must be automatically sorted by `ruff`.
+- **Descriptive Naming**: All variables, functions, methods, and classes must have clear, descriptive names that reveal their intent.
+- **Single Responsibility**: Functions and classes should be small and adhere to the Single Responsibility Principle.
+- **Documentation**: All public modules, classes, and functions must have docstrings explaining their purpose, arguments, and return values.
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+## 3. Testing
+- **Framework**: `pytest` is the sole framework for all tests.
+- **Coverage**: Every new feature must be accompanied by tests.
+- **TDD**: Follow the Red-Green-Refactor cycle. Write a failing test before writing implementation code.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## 4. Development Workflow
+- **Branching**:
+  - `main`: Production-ready, stable code.
+  - `develop`: Integration branch for features.
+  - `feature/<name>`: For new features or bug fixes.
+- **Commits**: Follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
+- **Pull Requests (PRs)**:
+  - All work must be submitted via PRs to the `develop` branch.
+  - PRs must pass all automated checks (linting, type checking, testing).
+  - PRs require at least one approving review.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## 5. Versioning
+This project adheres to [Semantic Versioning 2.0.0](https://semver.org/). Version numbers (MAJOR.MINOR.PATCH) will be updated as follows:
+- **MAJOR**: For incompatible API changes.
+- **MINOR**: For new, backward-compatible functionality.
+- **PATCH**: For backward-compatible bug fixes.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## 6. Project Technology Stack
+| Category              | Tool / Standard                  |
+| --------------------- | -------------------------------- |
+| **Language**          | Python 3.12+                     |
+| **Package Manager**   | `uv`                             |
+| **Project Config**    | `pyproject.toml`                 |
+| **UI Framework**      | Tkinter                          |
+| **Testing**           | `pytest`                         |
+| **Linting/Formatting**| `ruff`                           |
+| **Type Checking**     | `mypy` (strict)                  |
 
-## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+## 7. Governance
+All contributions must align with this constitution. Any proposed deviation requires a documented ADR (Architectural Decision Record) and formal approval.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.2.0 | **Ratified**: 2025-12-19 | **Last Amended**: 2025-12-19
