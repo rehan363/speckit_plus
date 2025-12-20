@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+*.egg-info/
+.pytest_cache/
+
+# IDEs
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+
+# Logs
+*.log
+*.log.*
+
+# Environment variables
+.env
+.env.*
+
+# Miscellaneous
+*.tmp
+*.swp
+node_modules/ # In case npm/yarn is used for frontend assets
+.uv/
