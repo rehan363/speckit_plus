@@ -1,0 +1,63 @@
+[project]
+name = "calculator"
+version = "0.1.0"
+description = "A world-class calculator with a PyQt GUI and robust logic."
+authors = [
+    { name = "Gemini CLI", email = "gemini-cli@google.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "PyQt6==6.6.1",
+    "numpy", # For future scientific operations, as per plan.md
+]
+
+[project.scripts]
+calculator = "calculator.main:main"
+
+[tool.uv]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = [
+    "tests",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # Pyflakes
+    "I", # Isort
+    "N", # Naming conventions
+    "D", # Pydocstyle
+    "UP", # pyupgrade
+    "A", # Flake8-builtins
+    "B", # Flake8-bugbear
+    "C", # Flake8-comprehensions
+    "TID", # flake8-tidy-imports
+    "PERF", # Perflint
+    "ARG", # Flake8-unused-arguments
+    "SIM", # flake8-simplify
+    "PTH", # flake8-pathlib
+    "ISC", # flake8-implicit-str-concat
+    "RET", # flake8-return
+]
+ignore = [
+    "D100", # Missing docstring in public module
+    "D104", # Missing docstring in public package
+    "D107", # Missing docstring in __init__
+]
+
+[tool.mypy]
+python_version = "3.12"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+plugins = [
+    "pydantic.mypy",
+]
